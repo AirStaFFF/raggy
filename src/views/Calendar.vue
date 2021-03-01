@@ -1,12 +1,13 @@
 <template>
-  <div class="text-center section">
-    <h2 class="h2">Calendar</h2>
+  <div class="calendar">
+    <h2>Calendar</h2>
     <calendar-form
       v-if="day"
+      class="form"
       @on-submit="setDate($event)"
     />
     <v-calendar
-      class="custom-calendar max-w-full"
+      class="custom-calendar"
       :masks="masks"
       :attributes="attributes"
       disable-page-swipe
@@ -14,16 +15,14 @@
       <div
         slot="day-content"
         slot-scope="{ day, attributes }"
-        class="flex flex-col h-full z-10 overflow-hidden"
+        class="z-10"
         @click="edit(day)"
       >
-        <span class="day-label text-sm text-gray-900">{{ day.day }}</span>
-        <div
-          class="flex-grow overflow-y-scroll overflow-x-auto">
+        <span>{{ day.day }}</span>
+        <div>
           <p
             v-for="attr in filterAttrs(attributes)"
             :key="attr.key"
-            class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1"
             :class="attr.customData.class"
           >
             <span v-if="attr.key !== 'today'">
@@ -55,7 +54,7 @@
             dot: true,
             dates: new Date(),
             customData: {
-              class: 'bg-orange-500 text-white'
+              class: ''
             }
           },
         ],
@@ -79,7 +78,7 @@
             mode,
             start,
             end,
-            class: 'bg-red-600 text-white',
+            class: '',
           },
           dates: {
             months: [...month],
@@ -101,6 +100,11 @@
 </script>
 
 <style lang="scss">
+  .calendar {
+    max-width: 1060px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .vc-day {
     width: 150px !important;
     height: 100px !important;

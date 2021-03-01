@@ -7,8 +7,12 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@mapbox/mapbox-gl-draw": "^1.2.2",
+    "@mapbox/mapbox-gl-geocoder": "^4.7.0",
+    "@studiometa/vue-mapbox-gl": "^1.4.7",
     "core-js": "^3.6.5",
     "mapbox-gl": "^2.1.1",
+    "mapbox-gl-draw": "^0.16.0",
     "mapbox-gl-vue": "^2.0.4",
     "register-service-worker": "^1.7.1",
     "v-calendar": "^2.2.3",
